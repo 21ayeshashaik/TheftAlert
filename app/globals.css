@@ -3,37 +3,52 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+  --background: #0f172a;
+  --foreground: #f8fafc;
+  --primary: #ef4444; /* Red for alert */
+  --secondary: #3b82f6; /* Blue for neutral */
+  --accent: #10b981; /* Green for safe */
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  color: var(--foreground);
+  background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
+  min-height: 100vh;
+  font-family: 'Inter', sans-serif;
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
-  .gradient {
-    @apply bg-gradient-to-b from-white via-gray-300 to-gray-600;
+  
+  /* Glassmorphism Card */
+  .glass-card {
+    @apply bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg border border-white border-opacity-20 rounded-2xl shadow-xl;
   }
-  .gradient-title {
-    @apply gradient text-transparent bg-clip-text;
+
+  /* Neon Text Effect */
+  .neon-text {
+    text-shadow: 0 0 10px rgba(239, 68, 68, 0.7), 0 0 20px rgba(239, 68, 68, 0.5);
+  }
+
+  /* Modern Gradient Text */
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-red-500 via-orange-500 to-yellow-500;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #1e293b; 
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #475569; 
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #64748b; 
   }
 }
